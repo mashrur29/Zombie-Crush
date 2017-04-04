@@ -8,14 +8,12 @@ using namespace std;
 sf::Clock delay;
 int key_delay1=200,key_name_delay=150;
 
-struct Point
-{
+struct Point {
     int x;
     int y;
 };
 
-int main()
-{
+int main() {
 
     Point en1,en2;
     bool start=true,start1=true;
@@ -240,18 +238,14 @@ int main()
 
     window.clear();
     delay.restart();
-    while(finished)
-    {
+    while(finished) {
         c1=true;
 
         // Starting Menu
-        while(window.isOpen() && finished && !start_game && !score_high && !credits)
-        {
+        while(window.isOpen() && finished && !start_game && !score_high && !credits) {
             sf::Event event;
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -282,8 +276,7 @@ int main()
             str= {"NEW GAME"};
             text_horror.setString(str);
             text_horror.setPosition(310,200);
-            if(pos1==0)
-            {
+            if(pos1==0) {
                 text_horror.setColor(sf::Color::White);
                 text_horror.setPosition(280,200);
                 text_horror.setCharacterSize(90);
@@ -297,8 +290,7 @@ int main()
             str= {"SCORE BOARD"};
             text_horror.setString(str);
             text_horror.setPosition(295,300);
-            if(pos1==1)
-            {
+            if(pos1==1) {
                 text_horror.setColor(sf::Color::White);
                 text_horror.setPosition(260,285);
                 text_horror.setCharacterSize(90);
@@ -312,8 +304,7 @@ int main()
             str= {"CREDITS"};
             text_horror.setString(str);
             text_horror.setPosition(330,400);
-            if(pos1==2)
-            {
+            if(pos1==2) {
                 text_horror.setColor(sf::Color::White);
                 text_horror.setPosition(307,380);
                 text_horror.setCharacterSize(90);
@@ -328,8 +319,7 @@ int main()
             str= {"EXIT"};
             text_horror.setString(str);
             text_horror.setPosition(360,500);
-            if(pos1==3)
-            {
+            if(pos1==3) {
                 text_horror.setColor(sf::Color::White);
                 text_horror.setPosition(344,480);
                 text_horror.setCharacterSize(90);
@@ -340,15 +330,13 @@ int main()
             text_horror.setColor(sf::Color::Red);
 
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && delay.getElapsedTime().asMilliseconds()>key_name_delay)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && delay.getElapsedTime().asMilliseconds()>key_name_delay) {
                 sel.play();
                 pos1=pos1-1;
                 if(pos1<0) pos1=0;
                 delay.restart();
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && delay.getElapsedTime().asMilliseconds()>key_name_delay)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && delay.getElapsedTime().asMilliseconds()>key_name_delay) {
                 sel.play();
                 pos1=(pos1+1);
                 if(pos1>3) pos1=3;
@@ -356,28 +344,20 @@ int main()
             }
 
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1) {
 
                 sel.play();
-                if(pos1==0)
-                {
+                if(pos1==0) {
                     start_game=true;
                     delay.restart();
                     break;
-                }
-                else if(pos1==1)
-                {
+                } else if(pos1==1) {
                     score_high=true;
                     break;
-                }
-                else if(pos1==2)
-                {
+                } else if(pos1==2) {
                     credits=true;
                     break;
-                }
-                else if(pos1==3)
-                {
+                } else if(pos1==3) {
                     finished=false;
                     break;
                 }
@@ -397,8 +377,7 @@ int main()
             window.draw(text_horror);
 
 
-            if(c1)
-            {
+            if(c1) {
                 music.play();
                 c1=false;
             }
@@ -414,13 +393,10 @@ int main()
 
 
 // Bragging a little :v
-        while(window.isOpen() && finished && !start_game && !score_high && credits)
-        {
+        while(window.isOpen() && finished && !start_game && !score_high && credits) {
             sf::Event event;
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -483,8 +459,7 @@ int main()
 
             window.draw(text_horror);
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
                 sel.play();
                 window.clear();
                 credits=false;
@@ -500,13 +475,10 @@ int main()
         bool file1=true;
 
         // High Scores
-        while(window.isOpen() && finished && !start_game && score_high && !credits)
-        {
+        while(window.isOpen() && finished && !start_game && score_high && !credits) {
             sf::Event event;
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -577,8 +549,7 @@ int main()
             int yx=250;
 
 // Player name
-            while (std::getline(file,str_high))
-            {
+            while (std::getline(file,str_high)) {
                 if(str_high.size()==0) continue;
                 text_horror.setFont(font_h1);
                 text_horror.setCharacterSize(40);
@@ -597,8 +568,7 @@ int main()
             yx=250;
 
 
-            while (std::getline(file2, str_high))
-            {
+            while (std::getline(file2, str_high)) {
                 if(str_high.size()==0) continue;
                 text_horror.setFont(font_h1);
                 text_horror.setCharacterSize(40);
@@ -619,8 +589,7 @@ int main()
             yx=250;
 
 
-            while (std::getline(file3, str_high))
-            {
+            while (std::getline(file3, str_high)) {
                 if(str_high.size()==0) continue;
                 text_horror.setFont(font_h1);
                 text_horror.setCharacterSize(40);
@@ -644,8 +613,7 @@ int main()
             window.draw(text_horror);
 
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
                 sel.play();
                 window.clear();
                 score_high=false;
@@ -663,13 +631,10 @@ int main()
         ic=0;
 
         // Loading Menu
-        while(window.isOpen() && finished && start_game && !score_high && !credits && 0)
-        {
+        while(window.isOpen() && finished && start_game && !score_high && !credits && 0) {
             sf::Event event;
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -685,8 +650,7 @@ int main()
             ic+=5;
 
             sf::sleep(sf::milliseconds(20));
-            if (ic>450)
-            {
+            if (ic>450) {
                 music1.stop();
                 window.clear();
                 break;
@@ -700,13 +664,10 @@ int main()
 
 
         // Tutorial
-        while (window.isOpen() && finished && start_game && !score_high && !credits)
-        {
+        while (window.isOpen() && finished && start_game && !score_high && !credits) {
             sf::Event event;
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -769,8 +730,7 @@ int main()
 
 
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1) {
                 sel.play();
                 window.clear();
                 delay.restart();
@@ -801,13 +761,10 @@ int main()
         rectangle.setFillColor(sf::Color::Green);
 
         // Main Game
-        while (window.isOpen() && finished && start_game && !score_high && !credits)
-        {
+        while (window.isOpen() && finished && start_game && !score_high && !credits) {
             sf::Event event;
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -823,18 +780,13 @@ int main()
             else if(distance%10000==0 && distance) music_back1.play();
 
             // Level
-            if(distance>=0&&distance<10000)
-            {
+            if(distance>=0&&distance<10000) {
                 level=1;
                 speed=3;
-            }
-            else if(distance>=10000&&distance<50000)
-            {
+            } else if(distance>=10000&&distance<50000) {
                 level=2;
                 speed=2;
-            }
-            else
-            {
+            } else {
                 level=3;
                 speed=1;
             }
@@ -893,8 +845,7 @@ int main()
             if(!f4 && distance>=30000) window.draw(enemy21);
 
             // Zombie Movement
-            if(c%speed==0)
-            {
+            if(c%speed==0) {
                 zy1++;
                 if(level>=2)
                     zy3++;
@@ -902,8 +853,7 @@ int main()
                 if(distance>=30000) zy2++;
                 if(life>0) distance++;
 
-                if(zy1>529&&zy1<600&&!f1||zy4>529&&zy4<600&&!f2)
-                {
+                if(zy1>529&&zy1<600&&!f1||zy4>529&&zy4<600&&!f2) {
                     miss_count++;
                 }
                 if(zy3>529&&zy3<600&&!f3&&level>=2) miss_count++;
@@ -912,29 +862,25 @@ int main()
                 c=0;
             }
 
-            if(zy1>529)
-            {
+            if(zy1>529) {
                 z_n1=0;
                 f1=false;
                 zx1=zm;
                 zy1=-5;
             }
-            if(zy4>529)
-            {
+            if(zy4>529) {
                 z_n4=0;
                 f2=false;
                 zx4=(zm+1)%31;
                 zy4=-75;
             }
-            if(zy3>529 && level>=2)
-            {
+            if(zy3>529 && level>=2) {
                 z_n3=0;
                 f3=false;
                 zx3=(zm+2)%31;
                 zy3=-145;
             }
-            if(zy2>529 && distance>=30000)
-            {
+            if(zy2>529 && distance>=30000) {
                 z_n2=0;
                 f4=false;
                 zx2=(zm+3)%31;
@@ -990,8 +936,7 @@ int main()
 
 
             // THE END
-            if(life<=0)
-            {
+            if(life<=0) {
                 // clear all
                 sound.stop();
                 music1.stop();
@@ -1009,8 +954,7 @@ int main()
             window.draw(f_p23);
 
             // Level Change
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && delay.getElapsedTime().asMilliseconds()>key_delay1)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && delay.getElapsedTime().asMilliseconds()>key_delay1) {
                 level++;
                 if(level==1) distance=0;
                 else if(level==2) distance=10001;
@@ -1019,8 +963,7 @@ int main()
                 if(level>3) level=3;
                 delay.restart();
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && delay.getElapsedTime().asMilliseconds()>key_delay1)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && delay.getElapsedTime().asMilliseconds()>key_delay1) {
                 level--;
                 if(level==1) distance=0;
                 else if(level==2) distance=10001;
@@ -1047,12 +990,10 @@ int main()
 
 
             // Scores
-            if(enemy11.getGlobalBounds().intersects(pic.getGlobalBounds()))
-            {
+            if(enemy11.getGlobalBounds().intersects(pic.getGlobalBounds())) {
                 f1=true;
                 z_n1++;
-                if(z_n1==1)
-                {
+                if(z_n1==1) {
                     sound.setBuffer(dead);
                     sound.play();
                 }
@@ -1060,12 +1001,10 @@ int main()
                     score+=1;
             }
 
-            if(enemy41.getGlobalBounds().intersects(pic.getGlobalBounds()))
-            {
+            if(enemy41.getGlobalBounds().intersects(pic.getGlobalBounds())) {
                 f2=true;
                 z_n4++;
-                if(z_n4==1)
-                {
+                if(z_n4==1) {
                     sound.setBuffer(dead);
                     sound.play();
                 }
@@ -1073,12 +1012,10 @@ int main()
                     score+=1;
             }
 
-            if(enemy31.getGlobalBounds().intersects(pic.getGlobalBounds()) && level>=2)
-            {
+            if(enemy31.getGlobalBounds().intersects(pic.getGlobalBounds()) && level>=2) {
                 f3=true;
                 z_n3++;
-                if(z_n3==1)
-                {
+                if(z_n3==1) {
                     sound.setBuffer(dead);
                     sound.play();
                 }
@@ -1086,12 +1023,10 @@ int main()
                     score+=1;
             }
 
-            if(enemy21.getGlobalBounds().intersects(pic.getGlobalBounds()) && distance>=30000)
-            {
+            if(enemy21.getGlobalBounds().intersects(pic.getGlobalBounds()) && distance>=30000) {
                 f4=true;
                 z_n2++;
-                if(z_n2==1)
-                {
+                if(z_n2==1) {
                     sound.setBuffer(dead);
                     sound.play();
                 }
@@ -1100,29 +1035,24 @@ int main()
             }
 
 
-            if(f1 && life>0)
-            {
+            if(f1 && life>0) {
                 blood1.setPosition(sf::Vector2f(zom[zx1],zy1));
                 window.draw(blood1);
             }
-            if(f2 && life>0)
-            {
+            if(f2 && life>0) {
                 blood1.setPosition(sf::Vector2f(zom[zx4],zy4));
                 window.draw(blood1);
             }
-            if(f3 && life>0 && level>=2)
-            {
+            if(f3 && life>0 && level>=2) {
                 blood1.setPosition(sf::Vector2f(zom[zx3],zy3));
                 window.draw(blood1);
             }
-            if(f4 && life>0 && distance>=30000)
-            {
+            if(f4 && life>0 && distance>=30000) {
                 blood1.setPosition(sf::Vector2f(zom[zx2],zy2));
                 window.draw(blood1);
             }
 
-            if(distance%10000==0)
-            {
+            if(distance%10000==0) {
                 miss_count--;
                 if(miss_count<0) miss_count=0;
             }
@@ -1145,14 +1075,11 @@ int main()
         string name;
 
         // PLayer Name
-        while (window.isOpen() && finished && start_game && !score_high && !credits)
-        {
+        while (window.isOpen() && finished && start_game && !score_high && !credits) {
             sf::Event event;
 
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
 
                     if (event.type == sf::Event::Closed)
                         window.close();
@@ -1164,17 +1091,14 @@ int main()
 
 // Entering Name
             if(name.size())
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && delay.getElapsedTime().asMilliseconds()>key_name_delay)
-                {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && delay.getElapsedTime().asMilliseconds()>key_name_delay) {
                     name.pop_back();
                     delay.restart();
                 }
 
 
-            if (event.type == sf::Event::TextEntered && delay.getElapsedTime().asMilliseconds()>key_name_delay)
-            {
-                if (event.text.unicode<128 && name.size()<=15)
-                {
+            if (event.type == sf::Event::TextEntered && delay.getElapsedTime().asMilliseconds()>key_name_delay) {
+                if (event.text.unicode<128 && name.size()<=15) {
                     name.push_back((char)event.text.unicode);
                     delay.restart();
                 }
@@ -1223,8 +1147,7 @@ int main()
 
             window.draw(text_horror);
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1) {
 
                 ofstream myfile;
                 myfile.open ("high1.txt",std::ios::out|std::ios::app);
@@ -1251,14 +1174,11 @@ int main()
 
 
         // THE END
-        while(window.isOpen() && finished && start_game && !score_high && !credits)
-        {
+        while(window.isOpen() && finished && start_game && !score_high && !credits) {
             sf::Event event;
 
-            while(window.pollEvent(event))
-            {
-                switch(event.type)
-                {
+            while(window.pollEvent(event)) {
+                switch(event.type) {
                     if (event.type == sf::Event::Closed)
                         window.close();
                     break;
@@ -1322,8 +1242,7 @@ int main()
             str= {"MAIN MENU"};
             text_horror.setString(str);
             text_horror.setPosition(310,360);
-            if(pos1==0)
-            {
+            if(pos1==0) {
                 text_horror.setPosition(270,360);
                 text_horror.setCharacterSize(90);
                 text_horror.setColor(sf::Color::White);
@@ -1337,8 +1256,7 @@ int main()
             str= {"EXIT"};
             text_horror.setString(str);
             text_horror.setPosition(360,450);
-            if(pos1==1)
-            {
+            if(pos1==1) {
                 text_horror.setPosition(340,410);
                 text_horror.setCharacterSize(90);
                 text_horror.setColor(sf::Color::White);
@@ -1350,15 +1268,13 @@ int main()
             text_horror.setColor(sf::Color::Red);
 
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && delay.getElapsedTime().asMilliseconds()>key_name_delay)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && delay.getElapsedTime().asMilliseconds()>key_name_delay) {
                 sel.play();
                 pos1--;
                 if(pos1<0) pos1=0;
                 delay.restart();
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && delay.getElapsedTime().asMilliseconds()>key_name_delay)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && delay.getElapsedTime().asMilliseconds()>key_name_delay) {
                 sel.play();
                 pos1++;
                 if(pos1>1) pos1=1;
@@ -1366,18 +1282,14 @@ int main()
             }
 
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1)
-            {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && delay.getElapsedTime().asMilliseconds()>key_delay1) {
                 sel.play();
 
-                if(pos1==0)
-                {
+                if(pos1==0) {
                     start_game=false;
                     delay.restart();
                     break;
-                }
-                else
-                {
+                } else {
                     finished=false;
                     delay.restart();
                     break;
